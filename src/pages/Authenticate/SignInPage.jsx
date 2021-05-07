@@ -49,7 +49,7 @@ export default class SignInForm extends Component {
           <input
             type="text"
             name="password"
-            value={this.state.email}
+            value={this.state.password}
             onChange={this.handleChange}
           />
           <button onClick={this.handleSubmit}></button>

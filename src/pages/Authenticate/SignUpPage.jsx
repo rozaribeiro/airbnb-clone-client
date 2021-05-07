@@ -23,6 +23,18 @@ export default class SignInForm extends Component {
     console.log("email",this.state.email);
   }
 
+  handleSubmit = async (e) => {
+    const {email, password} = this.state;
+
+    try {
+        const response = await userService.signup(email, password);
+        localStorage.setItem('token', response.data.token);
+        this.context.setAuth(true);
+        this.props.history.push('/home');
+    } catch(e) {
+        this.setState({error: e.response.data.error});
+    }
+}
   
   handleSubmit() {
 // api.post()
