@@ -9,6 +9,9 @@ export default class SignUpForm extends Component {
     super(props);
 
     this.state = {
+      first_name: "",
+      last_name: "",
+      role: "guest",
       email: "", // "" ?
       password: "",
       error: null,
@@ -24,10 +27,16 @@ export default class SignUpForm extends Component {
   };
 
   handleSubmit = async (e) => {
-    const { email, password } = this.state;
+    const { first_name, last_name, role, email, password } = this.state;
 
     try {
-      const response = await userService.signup(email, password);
+      const response = await userService.signup(
+        first_name,
+        last_name,
+        role,
+        email,
+        password
+      );
       console.log("nous sommes là!");
       console.log(`response`, response);
       // localStorage.setItem('token', response.data);
@@ -42,21 +51,38 @@ export default class SignUpForm extends Component {
   // SIGN UP / REGISTER / INSCRIPTION
   render() {
     return (
-      <div>
+      <div className="signUP">
         <h1>Sign Up</h1>
         <form action="POST">
+          <label htmlFor="first_name">First name</label>
+          <input
+            type="text"
+            name="first_name"
+            value={this.state.first_name}
+            onChange={this.handleChange}
+          />
+
+          <label htmlFor="last_name">Last name</label>
+          <input
+            type="text"
+            name="last_name"
+            value={this.state.last_name}
+            onChange={this.handleChange}
+          />
+
+          <label htmlFor="role">Role</label>
+          <input
+            type="text"
+            name="role"
+            value={this.state.role}
+            onChange={this.handleChange}
+          />
+
           <label htmlFor="email">Email</label>
           <input
             type="text"
             name="email"
             value={this.state.email}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
             onChange={this.handleChange}
           />
           <label htmlFor="password">Password</label>
