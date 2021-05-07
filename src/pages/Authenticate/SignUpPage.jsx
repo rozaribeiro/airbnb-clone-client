@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {userService} from '../../services/';
 // import api from 
 // import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom';
 import {BrowserRouter as Link} from 'react-router-dom';
@@ -24,15 +25,19 @@ export default class SignInForm extends Component {
   }
 
   handleSubmit = async (e) => {
+    e.preventDefault();
     const {email, password} = this.state;
 
     try {
         const response = await userService.signup(email, password);
-        localStorage.setItem('token', response.data.token);
-        this.context.setAuth(true);
-        this.props.history.push('/home');
+        console.log("nous sommes là!");
+        console.log(response);
+        // localStorage.setItem('token', response.data);
+        // this.context.setAuth(true);
+        // this.props.history.push('/home');
     } catch(e) {
         this.setState({error: e.response.data.error});
+        console.log(this.state.error);
     }
 }
   
