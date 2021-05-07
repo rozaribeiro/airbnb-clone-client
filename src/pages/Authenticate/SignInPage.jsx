@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import api from
 // import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom';
 import { BrowserRouter as Link } from "react-router-dom";
-import { userService } from "../../services/"
+import { userService } from "../../services/";
 
 export default class SignInForm extends Component {
   constructor(props) {
@@ -24,23 +24,31 @@ export default class SignInForm extends Component {
     console.log("password", this.state.password);
   };
 
-  handleClick = async (e) => {
-    const {email, password} = this.state;
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    // await console.log("test");
+    const { email, password } = this.state;
 
     try {
-        const response = await userService.login(email, password);
-        localStorage.setItem('token', response.data.token);
-        // this.context.setAuth(true);
-        this.props.history.push('/home');
-    } catch(error) {
-        this.setState({error: error.response.data.error});
+      const response = await userService.signin(email, password);
+      localStorage.setItem("token", response.data.token);
+      // console.log("server response: ", response);
+      console.log(`localStorage contents: `, localStorage);
+      // this.context.setAuth(true);
+
+      // this.props.history.push("/");
+    } catch (error) {
+      // console.log(`error`, error);
+      console.error(error);
+      // console.clear(error);
+      // this.setState({ error: error.response.data.error });
     }
-}
+  };
   render() {
     return (
       <>
         <h1>Sign In</h1>
-        <form action="">
+        <form action="POST">
           <label htmlFor="email">Email</label>
           <input
             type="text"

@@ -14,13 +14,17 @@ export default class index extends Component {
   signUp = () => {
     this.props.history.push("/signup");
   };
+  signIn = () => {
+    this.props.history.push("/signin");
+  };
 
   render() {
     return (
       <>
         {/* <LoginForm /> */}
         <li>
-          <button onClick={this.signUp}>Sign Up (Inscription)</button>
+          <button onClick={this.signUp}>Sign Up (Register)</button>
+          <button onClick={this.signIn}>Sign In (Login)</button>
         </li>
       </>
     );
