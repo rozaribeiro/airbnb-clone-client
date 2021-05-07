@@ -36,7 +36,7 @@ export default class SignInForm extends Component {
       console.log(`localStorage contents: `, localStorage);
       // this.context.setAuth(true);
 
-      // this.props.history.push("/");
+      this.props.history.push("/");
     } catch (error) {
       // console.log(`error`, error);
       console.error(error);

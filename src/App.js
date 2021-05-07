@@ -17,6 +17,18 @@ import {
   Redirect,
   Link,
 } from "react-router-dom";
+
+// const PrivateRoute = ({component: Component, ...rest}) => {
+//   const store = React.useContext(appContext);
+//   return (
+//     <Route {...rest} render={(props) => (
+//       store.isAuth
+//       ? <Component {...props} />
+//       : <Redirect to='/' />
+//     )} />
+//   );
+// }
+
 function App() {
   return (
     <Router>
