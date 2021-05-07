@@ -27,7 +27,7 @@ class AddPlace extends React.Component {
     return (
       <>
         <h1>Add a place</h1>
-        <AddPlaceForm></AddPlaceForm>{" "}
+        <AddPlaceForm />
         {/* {this.state.error && <p>{this.state.error}</p>}
                 {article && 
                     <article>
