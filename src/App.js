@@ -8,8 +8,11 @@ import './assets/App.scss';
 import Homepage from './pages/Homepage/index'
 import SignIn from './pages/Authenticate/Form/SignInForm'; // Connexion
 import SignUp from './pages/Authenticate/Form/SignUpForm'; // Inscription
+import Authenticate from './pages/Authenticate/'; // Inscription
 
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+
+
+import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom';
 function App() {
   return (
     <Router>
@@ -17,8 +20,9 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
-  </Switch>
-  </Router>
+        <Route exact path="/signin" component={Authenticate} />
+      </Switch>
+    </Router>
  
   );
 }
