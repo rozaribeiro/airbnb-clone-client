@@ -5,14 +5,14 @@ export default class index extends Component {
     super(props);
 
     this.state = {
-      testValue : "hey",
+      testValue: "hey",
     };
 
     console.log("props", this.props);
   }
 
-  login = () => {
-    this.props.history.push("/signin");
+  signUp = () => {
+    this.props.history.push("/signup");
   };
 
   render() {
@@ -20,7 +20,7 @@ export default class index extends Component {
       <>
         {/* <LoginForm /> */}
         <li>
-          <button onClick={this.login}>Connexion</button>
+          <button onClick={this.signUp}>Sign Up (Inscription)</button>
         </li>
       </>
     );

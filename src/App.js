@@ -6,9 +6,9 @@ import React from "react";
 import "./App.css";
 import "./assets/App.scss";
 import Homepage from "./pages/Homepage/index";
-import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
 import SignUp from "./pages/Authenticate/SignUpPage"; // Inscription
-import Authenticate from "./pages/Authenticate/"; // Inscription
+import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
+// import Authenticate from "./pages/Authenticate/"; // Inscription
 
 import {
   BrowserRouter as Router,
@@ -24,7 +24,7 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/signin" component={Authenticate} />
+        {/* <Route exact path="/signin" component={Authenticate} /> */}
       </Switch>
     </Router>
   );

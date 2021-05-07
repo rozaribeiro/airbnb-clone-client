@@ -36,7 +36,7 @@ export default class SignInForm extends Component {
   render() {
     return (
       <div>
-        <h1>Sign In</h1>
+        {/* <h1>Sign In</h1>
         <form action="">
           <label htmlFor="email">Email</label>
           <input
@@ -55,7 +55,7 @@ export default class SignInForm extends Component {
           <button onClick={this.handleSubmit}></button>
           <Link>Forgot Password?</Link>
           <Link>Forgot Email?</Link>
-        </form>
+        </form> */}
       </div>
     );
   }
