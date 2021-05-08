@@ -31,6 +31,7 @@ export default class SignInForm extends Component {
 
     try {
       const response = await userService.signin(email, password);
+      console.log(response);
       localStorage.setItem("token", response.data.token);
       // console.log("server response: ", response);
       console.log(`localStorage contents: `, localStorage);

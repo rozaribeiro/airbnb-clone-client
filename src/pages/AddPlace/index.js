@@ -29,7 +29,7 @@ class AddPlace extends React.Component {
         <h1>Add a place</h1>
         <AddPlaceForm />
         {/* {this.state.error && <p>{this.state.error}</p>}
-                {article && 
+                {article &&
                     <article>
                         <h3>{article.title}</h3>
                         <img src={article.img} alt={article.title}/>

@@ -17,15 +17,23 @@ export default class index extends Component {
   signIn = () => {
     this.props.history.push("/signin");
   };
+  addPlace = () => {
+    this.props.history.push("/places");
+  };
+  bookings = () => {
+    this.props.history.push("/bookings");
+  };
 
   render() {
     return (
       <>
         {/* <LoginForm /> */}
-        <li>
+        {/* <ul>
           <button onClick={this.signUp}>Sign Up (Register)</button>
           <button onClick={this.signIn}>Sign In (Login)</button>
-        </li>
+        </ul> */}
+        <button onClick={this.addPlace}>Add Place (dkong)</button>
+        <button onClick={this.bookings}>Bookings (dkong / ?)</button>
       </>
     );
   }

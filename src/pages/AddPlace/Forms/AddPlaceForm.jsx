@@ -1,5 +1,5 @@
-import axios from "axios";
 import React from "react";
+import api from "../../../services/api";
 // import {withRouter} from 'react-router-dom';
 
 class AddPlaceForm extends React.Component {
@@ -7,28 +7,31 @@ class AddPlaceForm extends React.Component {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
+      city_id: "",
+      users_id: "",
+      name: "",
+      // place_name: "",
+      description: "",
+      rooms: "",
+      bathrooms: "",
+      max_guests: "",
+      price_by_night: "",
+      available: 1,
       error: null,
-      city_id: null,
-      place_name: null,
-      description: null,
-      rooms: null,
-      bathroons: null,
-      max_guests: null,
-      price_by_night: null,
-      available: null,
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAddPlaceSubmit = this.handleAddPlaceSubmit.bind(this);
   }
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    // console.log(this.name.value);
+    console.log(this.state);
   };
 
   handleAddPlaceSubmit(e) {
     e.preventDefault();
+
     // console.log("submitted");
     // console.log(e.target.value);
     // try {
@@ -39,37 +42,51 @@ class AddPlaceForm extends React.Component {
     // } catch(e) {
     //     this.setState({error: e.response.data.error});
     // // console.log(this.state.place_name);
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhMTExQGphZGUuZnIiLCJyb2xlIjoiaG9zdCIsImV4cCI6MTYyMDMyOTg2OCwiaWF0IjoxNjIwMzI2NDMzfQ.-09MrgXUjlRXscTh-kS8Oo_-7z0fGEfczlFh4HYnaeU";
+    const token = localStorage.getItem("token");
+    console.log(token);
     // get from localStorage when authenticated
-    const api = axios.create({
-      baseURL: `http://localhost:8000/`,
-    });
+    // const api = axios.create({
+    // baseURL: `http://localhost:8000/`,
+    // });
+
+    // const {
+    //   city_id,
+    //   users_id,
+    //   name,
+    //   description,
+    //   rooms,
+    //   bathrooms,
+    //   max_guests,
+    //   price_by_night,
+    //   available,
+    // } = this.state;
+    const place_data = {
+      city_id: this.state.city_id,
+      users_id: this.state.users_id,
+      name: this.state.name,
+      description: this.state.description,
+      rooms: this.state.rooms,
+      bathrooms: this.state.bathrooms,
+      max_guests: this.state.max_guests,
+      price_by_night: this.state.price_by_night,
+      available: this.state.available,
+    };
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    // console.log(place_data);
     try {
-      api
-        .post(
-          "api/places",
-          {
-            city_id: this.state.city_id,
-            users_id: this.state.users_id,
-            name: this.state.name,
-            description: this.state.description,
-            rooms: this.state.rooms,
-            bathrooms: this.state.bathrooms,
-            max_guests: this.state.max_guests,
-            price_by_night: this.state.price_by_night,
-            available: this.state.available,
-          },
-          { headers: { Authorization: `Bearer ${token}` } }
-        )
-        .then(
-          (response) => {
-            console.log(response);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
+      api.post("/api/places", place_data, config).then(
+        // axios.post("http://localhost:8000/api/places", place_data, config).then(
+        (response) => {
+          console.log(response);
+          // this.props.history.push("/places");
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
 
       //   axios({
       //     method: "post",
@@ -83,7 +100,7 @@ class AddPlaceForm extends React.Component {
       // this.context.setAuth(true);
       // this.props.history.push('/home');
     } catch (e) {
-      console.log(e);
+      console.error(e);
       // this.setState({error: e.response.data.error});
       // console.log(this.state.place_name);
     }
@@ -92,55 +109,72 @@ class AddPlaceForm extends React.Component {
     return (
       <form action="POST">
         <ul>
-          <label for="city_id">city_id</label>
+          <label htmlFor="users_id">users_id</label>
           <input
+            value={this.state.users_id}
+            type="text"
+            name="users_id"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="city_id">city_id</label>
+          <input
+            value={this.state.city_id}
             type="text"
             name="city_id"
-            onChange={() => this.handleChange}
-          />
-          <label for="place_name">place_name</label>
-          <input
-            type="text"
-            name="place_name"
-            onChange={() => this.handleChange}
-          />
-          <label for="description">description</label>
-          <input
-            type="text"
-            name="description"
-            onChange={() => this.handleChange}
-          />
-          <label for="rooms">rooms</label>
-          <input type="text" name="rooms" onChange={() => this.handleChange} />
-          <label for="bathrooms">bathrooms</label>
-          <input
-            type="text"
-            name="bathrooms"
-            onChange={() => this.handleChange}
-          />
-          <label for="max_guests">max_guests</label>
-          <input
-            type="text"
-            name="max_guests"
-            onChange={() => this.handleChange}
-          />
-          <label for="price_by_night">price_by_night</label>
-          <input
-            type="text"
-            name="price_by_night"
-            onChange={() => this.handleChange}
-          />
-          <label for="available">available</label>
-          <input
-            type="text"
-            name="available"
-            onChange={() => this.handleChange}
+            onChange={this.handleChange}
           />
 
-          <button onClick={() => this.handleAddPlaceSubmit}>
-            {" "}
-            Add a place
-          </button>
+          <label htmlFor="name">Place Name (name)</label>
+          <input
+            value={this.state.name}
+            type="text"
+            name="name"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="description">description</label>
+          <input
+            value={this.state.description}
+            type="text"
+            name="description"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="rooms">rooms</label>
+          <input
+            value={this.state.rooms}
+            type="text"
+            name="rooms"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="bathrooms">bathrooms</label>
+          <input
+            value={this.state.bathrooms}
+            type="text"
+            name="bathrooms"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="max_guests">max_guests</label>
+          <input
+            value={this.state.max_guests}
+            type="text"
+            name="max_guests"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="price_by_night">price_by_night</label>
+          <input
+            value={this.state.price_by_night}
+            type="text"
+            name="price_by_night"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="available">available</label>
+          <input
+            value={this.state.available}
+            type="text"
+            name="available"
+            onChange={this.handleChange}
+          />
+
+          <button onClick={this.handleAddPlaceSubmit}> Add a place</button>
         </ul>
       </form>
       // <article onClick={(e) => this.props.history.push('/article/' + this.props.id)}>
