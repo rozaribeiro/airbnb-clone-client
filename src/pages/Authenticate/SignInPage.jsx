@@ -63,7 +63,7 @@ export default class SignInForm extends Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <button onClick={this.handleSubmit}></button>
+          <button onClick={this.handleSubmit}>Log In</button>
           <Link>Forgot Password?</Link>
           <Link>Forgot Email?</Link>
         </form>
