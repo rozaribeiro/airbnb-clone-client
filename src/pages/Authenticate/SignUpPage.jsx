@@ -93,7 +93,7 @@ export default class SignUpForm extends Component {
             onChange={this.handleChange}
           />
 
-          <button onClick={this.handleSubmit}>Inscription</button>
+          <button onClick={this.handleSubmit}>Register</button>
         </form>
       </div>
     );
