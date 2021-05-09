@@ -24,7 +24,7 @@ import {
   Switch,
   Route,
   Redirect,
-  Link,
+  // Link,
 } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -42,6 +42,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 function App() {
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signup" component={SignUp} />
@@ -70,6 +71,7 @@ function App() {
         routers.post("/api/bookings", isAuth, Bookings.postBookingsGuest); // NAWAL */}
         {/* <Route exact path="/signin" component={Authenticate} /> */}
       </Switch>
+      <Footer />
     </Router>
   );
 }

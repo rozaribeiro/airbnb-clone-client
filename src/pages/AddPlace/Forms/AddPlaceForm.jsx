@@ -1,14 +1,18 @@
 import React from "react";
 import api from "../../../services/api";
 // import {withRouter} from 'react-router-dom';
+import appContext from "../../../store";
 
 class AddPlaceForm extends React.Component {
+  static contextType = appContext;
+
   constructor(props) {
     super(props);
 
     this.state = {
       city_id: "",
-      users_id: "",
+      users_id: "", // host ID?
+      // users_id: this.context.authUserId, // host ID?
       name: "",
       // place_name: "",
       description: "",
@@ -16,7 +20,7 @@ class AddPlaceForm extends React.Component {
       bathrooms: "",
       max_guests: "",
       price_by_night: "",
-      available: 1,
+      available: true,
       error: null,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -63,6 +67,7 @@ class AddPlaceForm extends React.Component {
     const place_data = {
       city_id: this.state.city_id,
       users_id: this.state.users_id,
+      // users_id: this.context.authUserId,
       name: this.state.name,
       description: this.state.description,
       rooms: this.state.rooms,
@@ -71,17 +76,15 @@ class AddPlaceForm extends React.Component {
       price_by_night: this.state.price_by_night,
       available: this.state.available,
     };
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
 
     // console.log(place_data);
     try {
-      api.post("/api/places", place_data, config).then(
+      api.post("/api/places", place_data).then(
         // axios.post("http://localhost:8000/api/places", place_data, config).then(
         (response) => {
           console.log(response);
-          // this.props.history.push("/places");
+
+          // this.props.history.push("/bookings");
         },
         (error) => {
           console.error(error);
@@ -106,17 +109,18 @@ class AddPlaceForm extends React.Component {
     }
   }
   render() {
+    // console.log(this.context);
     return (
       <form action="POST">
         <ul>
-          <label htmlFor="users_id">users_id</label>
+          <label htmlFor="users_id">host_user_id</label>
           <input
             value={this.state.users_id}
             type="text"
             name="users_id"
             onChange={this.handleChange}
           />
-          <label htmlFor="city_id">city_id</label>
+          <label htmlFor="city_id">City (ID)</label>
           <input
             value={this.state.city_id}
             type="text"
@@ -124,55 +128,56 @@ class AddPlaceForm extends React.Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="name">Place Name (name)</label>
+          <label htmlFor="name">Place Name</label>
           <input
             value={this.state.name}
             type="text"
             name="name"
             onChange={this.handleChange}
           />
-          <label htmlFor="description">description</label>
+          <label htmlFor="description">Description</label>
           <input
             value={this.state.description}
             type="text"
             name="description"
             onChange={this.handleChange}
           />
-          <label htmlFor="rooms">rooms</label>
+          <label htmlFor="rooms">Rooms</label>
           <input
             value={this.state.rooms}
             type="text"
             name="rooms"
             onChange={this.handleChange}
           />
-          <label htmlFor="bathrooms">bathrooms</label>
+          <label htmlFor="bathrooms">Bathrooms</label>
           <input
             value={this.state.bathrooms}
             type="text"
             name="bathrooms"
             onChange={this.handleChange}
           />
-          <label htmlFor="max_guests">max_guests</label>
+          <label htmlFor="max_guests">Max guests</label>
           <input
             value={this.state.max_guests}
             type="text"
             name="max_guests"
             onChange={this.handleChange}
           />
-          <label htmlFor="price_by_night">price_by_night</label>
+          <label htmlFor="price_by_night">Price per night</label>
           <input
             value={this.state.price_by_night}
             type="text"
             name="price_by_night"
             onChange={this.handleChange}
           />
-          <label htmlFor="available">available</label>
+          {/* <label htmlFor="available">available</label>
           <input
             value={this.state.available}
-            type="text"
+            type="checkbox"
             name="available"
             onChange={this.handleChange}
-          />
+            checked
+          /> */}
 
           <button onClick={this.handleAddPlaceSubmit}> Add a place</button>
         </ul>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import appContext from "../../store";
 import { bookingsService } from "../../services/";
+// import BookingsListItem from "./BookingsListItem";
 
 export default class index extends Component {
   static contextType = appContext;
@@ -17,7 +18,9 @@ export default class index extends Component {
   async componentDidMount() {
     try {
       const response = await bookingsService.getBookedPlaces();
-      this.setState({ bookings: response.data.bookings });
+
+      console.log(response);
+      this.setState({ bookings: response.data.result });
     } catch (e) {
       if (e.response.status === 403) {
         localStorage.removeItem("token");
@@ -32,8 +35,34 @@ export default class index extends Component {
       <appContext.Consumer>
         {(context) => (
           <div>
-            {console.log(context)}
-            <h1>Bookings List</h1>
+            {console.log(`context`, context)}
+            {console.log(`context role`, context.role)}
+            <h1>Bookings List (Page)</h1>
+
+            {this.context.role === "host" ? <h2>Host booked places</h2> : null}
+            {this.context.role === "host" // host view (need to refacto to page/component)
+              ? this.state.bookings.map((booking, i) => (
+                  <li key={i}>
+                    {booking.name}
+                    {booking.description}
+                  </li>
+                  // <BookingsListItem
+                  //   key={i}
+                  //   booking_data={this.props}
+                  //   // img={booking.img}
+                  //   // id={booking.id}
+                  // />
+                ))
+              : null}
+            {this.context.role === "guest" ? <h2>Guest bookings</h2> : null}
+            {this.context.role === "guest"
+              ? this.state.bookings.map((booking, i) => (
+                  <li key={i}>
+                    {booking.name}
+                    {booking.description}
+                  </li>
+                ))
+              : null}
           </div>
         )}
       </appContext.Consumer>

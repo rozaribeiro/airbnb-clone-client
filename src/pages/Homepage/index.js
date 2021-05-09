@@ -5,7 +5,7 @@ export default class index extends Component {
     super(props);
 
     this.state = {
-      testValue: "hey",
+      testValue: "",
     };
 
     console.log("props", this.props);
@@ -35,8 +35,8 @@ export default class index extends Component {
           <button onClick={this.signUp}>Sign Up (Register)</button>
           <button onClick={this.signIn}>Sign In (Login)</button>
         </ul> */}
-        <button onClick={this.addPlace}>Add Place (dkong)</button>
-        <button onClick={this.bookings}>Bookings (dkong / ?)</button>
+        <button onClick={this.addPlace}>Add a place</button>
+        <button onClick={this.bookings}>Bookings</button>
         <button onClick={this.placeavailable}>Appartements à louer</button>
       </>
     );

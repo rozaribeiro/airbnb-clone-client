@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 // import api from
+import appContext from "../../store";
+
 // import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom';
 import { BrowserRouter as Link } from "react-router-dom";
 import { userService } from "../../services/";
 
 export default class SignInForm extends Component {
+  static contextType = appContext;
   constructor(props) {
     super(props);
 
@@ -26,23 +29,35 @@ export default class SignInForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    // await console.log("test");
-    const { email, password } = this.state;
-
+    // const { email, password } = this.state;
     try {
-      const response = await userService.signin(email, password);
-      console.log(response);
+      const response = await userService.signin(
+        this.state.email,
+        this.state.password
+      );
+      // console.log(response);
+      localStorage.removeItem("token");
       localStorage.setItem("token", response.data.token);
-      // console.log("server response: ", response);
-      console.log(`localStorage contents: `, localStorage);
-      // this.context.setAuth(true);
+      // console.log(`localStorage contents: `, localStorage);
+      this.context.setAuth(true);
+      // console.log(response.data.user);
+      console.log(response.data);
 
+      const {
+        first_name,
+        last_name,
+        email,
+        role,
+        authUserId,
+      } = response.data.user; // + id
+      this.context.setUserInfos(first_name, last_name, email, role, authUserId);
+
+      // console.log(`this.context`, this.context);
       this.props.history.push("/");
     } catch (error) {
-      // console.log(`error`, error);
       console.error(error);
       // console.clear(error);
-      // this.setState({ error: error.response.data.error });
+      this.setState({ error: error.response.data.error });
     }
   };
   render() {
@@ -59,7 +74,7 @@ export default class SignInForm extends Component {
           />
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password"
             name="password"
             value={this.state.password}
             onChange={this.handleChange}

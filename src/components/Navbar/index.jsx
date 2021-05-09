@@ -1,20 +1,27 @@
 import React from "react";
+// import { BrowserRouter as Link } from "react-router-dom";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import appContext from "../../store";
 // import {Link, withRouter} from 'react-router-dom';
 
 function Navbar(props) {
-  // const context = useContext(appContext);
+  const store = React.useContext(appContext);
 
-  const logout = () => {
-    // context.logout();
+  const logOut = () => {
+    localStorage.removeItem("token");
+    store.setAuth(false);
     props.history.push("/");
   };
 
   return (
     <nav className="navbar">
       <ul>
+        <li>
+          Welcome {store.user} ! Role : {store.role} Auth User ID :{" "}
+          {store.authUserId}
+        </li>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -24,7 +31,11 @@ function Navbar(props) {
         <li>
           <Link to="/signin">Log In</Link>
         </li>
-        {/* <li><button onClick={logout}>Log Out</button></li> */}
+        <li>
+          <Link onClick={logOut} to="/">
+            Log out
+          </Link>
+        </li>
       </ul>
     </nav>
   );
