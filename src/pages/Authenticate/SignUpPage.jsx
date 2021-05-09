@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { userService } from "../../services/";
 // import api from
 // import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom';
-import { BrowserRouter as Link } from "react-router-dom";
+// import { BrowserRouter as Link } from "react-router-dom";
 
 export default class SignUpForm extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class SignUpForm extends Component {
     this.state = {
       first_name: "",
       last_name: "",
-      role: "guest",
+      role: "",
       email: "", // "" ?
       password: "",
       error: null,
@@ -37,11 +37,11 @@ export default class SignUpForm extends Component {
         email,
         password
       );
-      console.log("nous sommes là!");
+      // console.log("nous sommes là!");
       console.log(`response`, response);
       // localStorage.setItem('token', response.data);
       // this.context.setAuth(true);
-      // this.props.history.push("/");
+      this.props.history.push("/signin");
     } catch (e) {
       this.setState({ error: e.response.data.error });
       console.log(this.state.error);
@@ -51,7 +51,7 @@ export default class SignUpForm extends Component {
   // SIGN UP / REGISTER / INSCRIPTION
   render() {
     return (
-      <div className="signUP">
+      <div className="signUp">
         <h1>Sign Up</h1>
         <form action="POST">
           <label htmlFor="first_name">First name</label>

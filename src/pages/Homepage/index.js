@@ -5,7 +5,7 @@ export default class index extends Component {
     super(props);
 
     this.state = {
-      testValue: "hey",
+      testValue: "",
     };
 
     console.log("props", this.props);
@@ -17,6 +17,12 @@ export default class index extends Component {
   signIn = () => {
     this.props.history.push("/signin");
   };
+  addPlace = () => {
+    this.props.history.push("/places");
+  };
+  bookings = () => {
+    this.props.history.push("/bookings");
+  };
   placeavailable = () => {
     this.props.history.push("/places/available");
   };
@@ -25,11 +31,13 @@ export default class index extends Component {
     return (
       <>
         {/* <LoginForm /> */}
-        <li>
+        {/* <ul>
           <button onClick={this.signUp}>Sign Up (Register)</button>
           <button onClick={this.signIn}>Sign In (Login)</button>
-          <button onClick={this.placeavailable}>Appartements à louer</button>
-        </li>
+        </ul> */}
+        <button onClick={this.addPlace}>Add a place</button>
+        <button onClick={this.bookings}>Bookings</button>
+        <button onClick={this.placeavailable}>Appartements à louer</button>
       </>
     );
   }

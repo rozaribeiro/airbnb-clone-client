@@ -15,9 +15,17 @@ class AppProvider extends React.Component {
 
     this.state = {
       user: null,
+      firstName: null,
+      lastName: null,
       isAuth: token ? true : false,
+      role: null,
+      authUserId: null,
       setUser: this.setUser,
+      setUserInfos: this.setUserInfos,
+
       setAuth: this.setAuth,
+      setRole: this.setRole,
+      logOut: this.logOut,
     };
   }
 
@@ -25,10 +33,19 @@ class AppProvider extends React.Component {
     this.setState({ user });
   };
 
+  setUserInfos = (user, firstName, lastName, role, authUserId) => {
+    this.setState({ user, firstName, lastName, role, authUserId });
+  };
   setAuth = (boolean) => {
     this.setState({ isAuth: boolean });
   };
-
+  setRole = (role) => {
+    this.setState({ role: role });
+  };
+  logOut = () => {
+    this.setState({ isAuth: false });
+    localStorage.removeItem("token");
+  };
   render() {
     return (
       <appContext.Provider value={this.state}>
