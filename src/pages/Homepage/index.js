@@ -23,6 +23,9 @@ export default class index extends Component {
   bookings = () => {
     this.props.history.push("/bookings");
   };
+  placeavailable = () => {
+    this.props.history.push("/places/available");
+  };
 
   render() {
     return (
@@ -34,6 +37,7 @@ export default class index extends Component {
         </ul> */}
         <button onClick={this.addPlace}>Add Place (dkong)</button>
         <button onClick={this.bookings}>Bookings (dkong / ?)</button>
+        <button onClick={this.placeavailable}>Appartements à louer</button>
       </>
     );
   }
