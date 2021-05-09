@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import appContext from "../../store";
-import {bookingsService} from "../../services/"
+import {bookingsService} from "../../services"
 
 export default class index extends Component {
    

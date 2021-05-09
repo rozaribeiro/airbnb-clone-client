@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import SearchByCity from "../partials/Header/SearchByCity"
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +25,7 @@ export default class index extends Component {
     return (
       <>
         {/* <LoginForm /> */}
+        <SearchByCity/>
         <li>
           <button onClick={this.signUp}>Sign Up (Register)</button>
           <button onClick={this.signIn}>Sign In (Login)</button>

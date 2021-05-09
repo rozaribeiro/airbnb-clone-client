@@ -4,10 +4,12 @@ const bookingsService = {
     getBookedPlaces: async () => {
         return await api.get('/api/bookings');
     },
-    // deleteBookedPlace: async (id) => {
+    bookPlaces: async () => {
+        return await api.post('/api/bookings');
+    },
+    // deleteBookedPlaces: async (id) => {
     //     return await api.get('/api/bookings/' + id);
-    // }
-    // other service method
+    // } 
 }
 
 export default bookingsService;
