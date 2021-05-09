@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import appContext from "../../store";
-import {bookingsService} from "../../services"
+import { bookingsService } from "../../services"
 
 export default class index extends Component {
-   
-  static contextType = appContext;
-
   constructor(props) {
     super(props)
     
@@ -31,14 +28,15 @@ async componentDidMount() {
 }
   render() {
     return (
-      <appContext.Consumer>
-        {(context) => (
-          <div>
-              {console.log(context)}
-            <h1>Book Place</h1>
-          </div>
-        )}
-      </appContext.Consumer>
+      
+      <div>
+        {this.state.data.map((elelement, index) => {
+          return( 
+            <button>Book Place</button>
+          )
+            
+       )}
+    </div>
     );
   }
 }

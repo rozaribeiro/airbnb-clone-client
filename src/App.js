@@ -12,13 +12,13 @@ import Homepage from "./pages/Homepage/index";
 import SignUp from "./pages/Authenticate/SignUpPage"; // Inscription
 import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
 // import Bookings from "./pages/BookedList/";
-import Navbar from "./components/Navbar/";
-import Footer from "./components/Footer/";
+// import Navbar from "./components/Navbar/";
+// import Footer from "../src/pages/partials/Footer";
 
 import PlacesAvailable from "./pages/PlacesList/index";
 import BookedList from "./pages/BookedList"; //  GUEST List places booked
 import BookPlace from "./pages/BookPlace"; // GUEST book place
-import DeleteBooking from "./pages/DeleteBooking"; // GUEST delete booked place
+// import DeleteBooking from "./pages/DeleteBooking"; // GUEST delete booked place
 
 // import Authenticate from "./pages/Authenticate/"; // Inscription
 
@@ -45,7 +45,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 function App() {
   return (
     <Router>
-      <Navbar />
+      {/* <Navbar /> */}
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signup" component={SignUp} />
@@ -73,7 +73,7 @@ function App() {
         routers.post("/api/bookings", isAuth, Bookings.postBookingsGuest); // NAWAL */}
         {/* <Route exact path="/signin" component={Authenticate} /> */}
       </Switch>
-      <Footer />
+      {/* <Footer/> */}
     </Router>
   );
 }

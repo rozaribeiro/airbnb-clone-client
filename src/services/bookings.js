@@ -1,7 +1,6 @@
 import api from "./api";
 
 const bookingsService = {
-<<<<<<< HEAD
     getBookedPlaces: async () => {
         return await api.get('/api/bookings');
     },
@@ -11,17 +10,6 @@ const bookingsService = {
     // deleteBookedPlaces: async (id) => {
     //     return await api.get('/api/bookings/' + id);
     // } 
-}
-
-export default bookingsService;
-=======
-  getBookedPlaces: async () => {
-    return await api.get("/api/bookings");
-  },
-  // deleteBookedPlace: async (id) => {
-  //     return await api.get('/api/bookings/' + id);
-  // }
-  // other service method
 };
 
 export default bookingsService;
@@ -55,4 +43,3 @@ export default bookingsService;
 // };
 
 // export default bookingsService;
->>>>>>> b8794778e154d243965a76ba97da00efaac0ad94
