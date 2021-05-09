@@ -10,6 +10,7 @@ import SignUp from "./pages/Authenticate/SignUpPage"; // Inscription
 import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
 import PlacesAvailable from "./pages/PlacesList/index";
 import BookedList from "./pages/BookedList";
+// import getOnePlace from "./pages/PlacesList/index";
 // import Authenticate from "./pages/Authenticate/"; // Inscription
 
 import {
@@ -40,12 +41,12 @@ function App() {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/places/available" component={PlacesAvailable} />
+        {/* <PrivateRoute exact path="/places/:place_id" component={getOnePlace} /> */}
         {/* <PrivateRoute exact path="/places" component={addPlace} /> {/* POST */}
         {/* <PrivateRoute exact path="/places" component={getPlacesCity} /> GET */}
-        {/* <PrivateRoute exact path="/places/:place_id" component={getOnePlace} />  */}
         {/* <PrivateRoute exact path="/places/:placeId" component={modifyPlace} />  */}
-        {/* <PrivateRoute exact path="/user/:user_id/places/:placeId" component={removePlace} />  */}{" "}
-        <PrivateRoute exact path="/bookings" component={BookedList} />{" "}
+        {/* <PrivateRoute exact path="/user/:user_id/places/:placeId" component={removePlace} />  */}
+        <PrivateRoute exact path="/bookings" component={BookedList} />
         {/* GET */}
         {/* <PrivateRoute exact path="/bookings/:id" component={deleteBookedPlace} />  */}
         {/* <PrivateRoute exact path="/bookings" component={postBookingsGuest} /> POST */}
