@@ -12,6 +12,8 @@ const availablePLaceService = {
   //   return await api.get("/api/places/");
   // },
   // NAWAL FIN
+  deletedPLaceService: async () => {
+    return await api.delete("/api/user/:user_id/places/:placeId");
+  },
 };
-
 export default availablePLaceService;
