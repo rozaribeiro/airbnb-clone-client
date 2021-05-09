@@ -8,6 +8,7 @@ import "./assets/App.scss";
 import Homepage from "./pages/Homepage/index";
 import SignUp from "./pages/Authenticate/SignUpPage"; // Inscription
 import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
+import PlacesAvailable from "./pages/PlacesList/index";
 // import Authenticate from "./pages/Authenticate/"; // Inscription
 
 import {
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/places/available" component={PlacesAvailable} />
         {/* <Route exact path="/signin" component={Authenticate} /> */}
       </Switch>
     </Router>

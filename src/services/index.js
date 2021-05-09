@@ -1,3 +1,4 @@
-import userService from './user';
+import userService from "./user";
+import availablePLaceService from "./place";
 
-export {userService};
+export { userService, availablePLaceService };

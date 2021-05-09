@@ -17,6 +17,9 @@ export default class index extends Component {
   signIn = () => {
     this.props.history.push("/signin");
   };
+  placeavailable = () => {
+    this.props.history.push("/places/available");
+  };
 
   render() {
     return (
@@ -25,6 +28,7 @@ export default class index extends Component {
         <li>
           <button onClick={this.signUp}>Sign Up (Register)</button>
           <button onClick={this.signIn}>Sign In (Login)</button>
+          <button onClick={this.placeavailable}>Appartements à louer</button>
         </li>
       </>
     );
