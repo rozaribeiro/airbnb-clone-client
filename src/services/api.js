@@ -2,7 +2,7 @@ import axios from "axios";
 
 //Connection to database
 const api = axios.create({
-  baseURL: `http://localhost:8000/`,
+  baseURL: `http://localhost:8000/`, // url api
 });
 
 // A U T H E N T I C A T E
@@ -14,4 +14,5 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
 export default api;
