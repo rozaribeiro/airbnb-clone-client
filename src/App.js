@@ -13,7 +13,7 @@ import SignUp from "./pages/Authenticate/SignUpPage"; // Inscription
 import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
 // import Bookings from "./pages/BookedList/";
 import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer/";
+import Footer from "./Components/Footer";
 
 import PlacesAvailable from "./pages/PlacesList/index";
 import BookedList from "./pages/BookedList"; //  GUEST List places booked
@@ -45,7 +45,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
+      <Navbar />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signup" component={SignUp} />
