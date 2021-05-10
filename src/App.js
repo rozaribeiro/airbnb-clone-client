@@ -12,12 +12,14 @@ import Homepage from "./pages/Homepage/index";
 import SignUp from "./pages/Authenticate/SignUpPage"; // Inscription
 import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
 // import Bookings from "./pages/BookedList/";
-import Navbar from "./components/Navbar/";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/";
 
 import PlacesAvailable from "./pages/PlacesList/index";
-import BookedList from "./pages/BookedList";
-// import getOnePlace from "./pages/PlacesList/index";
+import BookedList from "./pages/BookedList"; //  GUEST List places booked
+import BookPlace from "./pages/BookPlace"; // GUEST book place
+import DeleteBooking from "./pages/DeleteBooking"; // GUEST delete booked place
+
 // import Authenticate from "./pages/Authenticate/"; // Inscription
 
 import {
@@ -55,10 +57,11 @@ function App() {
         {/* <PrivateRoute exact path="/places" component={getPlacesCity} /> GET */}
         {/* <PrivateRoute exact path="/places/:placeId" component={modifyPlace} />  */}
         {/* <PrivateRoute exact path="/user/:user_id/places/:placeId" component={removePlace} />  */}
-        <PrivateRoute exact path="/bookings" component={BookedList} />
+        <PrivateRoute exact path="/bookings" component={BookedList} />{" "}
         {/* GET */}
-        {/* <PrivateRoute exact path="/bookings/:id" component={deleteBookedPlace} />  */}
-        {/* <PrivateRoute exact path="/bookings" component={postBookingsGuest} /> POST */}
+        <PrivateRoute exact path="/bookings" component={BookPlace} />{" "}
+        {/* POST */}
+        {/* <PrivateRoute exact path="/bookings/:id" component={DeleteBooking} /> GET */}
         {/* // P L A C E S   R O U T E S
         routers.post("/api/places", isAuth, Places.addPlace); // VINCENT corriger output
         routers.get("/api/places", isAuth, Places.getPlacesCity); // ROSA

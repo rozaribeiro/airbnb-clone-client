@@ -28,6 +28,7 @@ export default class index extends Component {
   render() {
     return (
       <div>
+        {/* // <h1>Places List</h1> */}
         <div className="PlaceAvailableTitle">
           <h1>Appartement à louer:</h1>
         </div>

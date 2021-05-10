@@ -4,6 +4,9 @@ const bookingsService = {
   getBookedPlaces: async () => {
     return await api.get("/api/bookings");
   },
+  bookPlaces: async () => {
+    return await api.post("/api/bookings");
+  },
   // deleteBookedPlace: async (id) => {
   //     return await api.get('/api/bookings/' + id);
   // }
