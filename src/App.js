@@ -12,8 +12,8 @@ import Homepage from "./pages/Homepage/index";
 import SignUp from "./pages/Authenticate/SignUpPage"; // Inscription
 import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
 // import Bookings from "./pages/BookedList/";
-// import Navbar from "./components/Navbar/";
-// import Footer from "../src/pages/partials/Footer";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer/";
 
 import PlacesAvailable from "./pages/PlacesList/index";
 import BookedList from "./pages/BookedList"; //  GUEST List places booked
@@ -73,7 +73,7 @@ function App() {
         routers.post("/api/bookings", isAuth, Bookings.postBookingsGuest); // NAWAL */}
         {/* <Route exact path="/signin" component={Authenticate} /> */}
       </Switch>
-      {/* <Footer/> */}
+      <Footer/>
     </Router>
   );
 }

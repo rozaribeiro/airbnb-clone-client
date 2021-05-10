@@ -1,15 +1,16 @@
 import api from "./api";
 
 const bookingsService = {
-    getBookedPlaces: async () => {
-        return await api.get('/api/bookings');
-    },
-    bookPlaces: async () => {
-        return await api.post('/api/bookings');
-    },
-    // deleteBookedPlaces: async (id) => {
-    //     return await api.get('/api/bookings/' + id);
-    // } 
+  getBookedPlaces: async () => {
+    return await api.get("/api/bookings");
+  },
+  bookPlaces: async () => {
+    return await api.post("/api/bookings");
+  },
+  // deleteBookedPlace: async (id) => {
+  //     return await api.get('/api/bookings/' + id);
+  // }
+  // other service method
 };
 
 export default bookingsService;

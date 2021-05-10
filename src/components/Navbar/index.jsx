@@ -12,6 +12,8 @@ function Navbar(props) {
   const logOut = () => {
     localStorage.removeItem("token");
     store.setAuth(false);
+    store.setUserInfos(null, null, null, null, null);
+
     props.history.push("/");
   };
 
@@ -19,8 +21,8 @@ function Navbar(props) {
     <nav className="navbar">
       <ul>
         <li>
-          Welcome {store.user} ! Role : {store.role} Auth User ID :{" "}
-          {store.authUserId}
+          Welcome <b>{store.user}</b> ! Role : <b>{store.role}</b> Auth User ID
+          : <b>{store.authUserId}</b>
         </li>
         <li>
           <Link to="/">Home</Link>

@@ -20,7 +20,7 @@ class AddPlaceForm extends React.Component {
       bathrooms: "",
       max_guests: "",
       price_by_night: "",
-      available: true,
+      available: 1,
       error: null,
     };
     this.handleChange = this.handleChange.bind(this);
