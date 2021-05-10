@@ -12,6 +12,8 @@ function Navbar(props) {
   const logOut = () => {
     localStorage.removeItem("token");
     store.setAuth(false);
+    store.setUserInfos(null, null, null, null, null);
+
     props.history.push("/");
   };
 
