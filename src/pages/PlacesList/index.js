@@ -25,7 +25,7 @@ export default class index extends Component {
   render() {
     return (
       <div>
-        <h1>Bonjour</h1>
+        <h1>Places List</h1>
       </div>
     );
   }
