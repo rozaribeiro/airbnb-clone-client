@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import SearchByCity from "../partials/Header/SearchByCity"
+import SearchByCity from "../partials/Header/SearchByCity";
+import appContext from "../../store";
 export default class index extends Component {
+  static useContext = appContext;
   constructor(props) {
     super(props);
 
@@ -35,7 +37,12 @@ export default class index extends Component {
           <button onClick={this.signUp}>Sign Up (Register)</button>
           <button onClick={this.signIn}>Sign In (Login)</button>
         </ul> */}
+        {console.log(`context contents`, this.context)}
+        {console.log(`context isAuth`, this.context.isAuth)}
+        {/* {this.context.isAuth === true ? ( */}
         <button onClick={this.addPlace}>Add a place</button>
+        {/* ) : null} */}
+        (isAuth display wip)
         <button onClick={this.bookings}>Bookings</button>
         <button onClick={this.placeavailable}>Appartements à louer</button>
       </>

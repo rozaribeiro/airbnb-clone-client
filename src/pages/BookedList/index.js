@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import appContext from "../../store";
 import { bookingsService } from "../../services/";
+import { Link } from "react-router-dom";
 // import BookingsListItem from "./BookingsListItem";
 
 export default class index extends Component {
@@ -43,8 +44,10 @@ export default class index extends Component {
             {this.context.role === "host" // host view (need to refacto to page/component)
               ? this.state.bookings.map((booking, i) => (
                   <li key={i}>
-                    {booking.name}
-                    {booking.description}
+                    Place name: {booking.name}
+                    Description: {booking.description}
+                    City: {booking.city}
+                    Booked by: {booking.users_id}
                   </li>
                   // <BookingsListItem
                   //   key={i}
@@ -53,14 +56,16 @@ export default class index extends Component {
                   //   // id={booking.id}
                   // />
                 ))
-              : null}
+              : "No bookings found for " + this.context.first_name}
             {this.context.role === "guest" ? <h2>Guest bookings</h2> : null}
             {this.context.role === "guest"
               ? this.state.bookings.map((booking, i) => (
-                  <li key={i}>
-                    {booking.name}
-                    {booking.description}
-                  </li>
+                  <Link>
+                    <li key={i}>
+                      {booking.name}
+                      {booking.description}
+                    </li>
+                  </Link>
                 ))
               : null}
           </div>

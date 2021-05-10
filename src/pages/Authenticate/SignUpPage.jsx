@@ -11,7 +11,7 @@ export default class SignUpForm extends Component {
     this.state = {
       first_name: "",
       last_name: "",
-      role: "",
+      role: "guest",
       email: "", // "" ?
       password: "",
       error: null,
@@ -25,6 +25,14 @@ export default class SignUpForm extends Component {
     this.setState({ [name]: value });
     console.log("email", this.state.email);
   };
+  handleOptionChange(e) {
+    console.log(e);
+    const role = e.target.value;
+    this.setState({
+      role: role,
+    });
+    console.log(this.state.role);
+  }
 
   handleSubmit = async (e) => {
     const { first_name, last_name, role, email, password } = this.state;
@@ -37,10 +45,7 @@ export default class SignUpForm extends Component {
         email,
         password
       );
-      // console.log("nous sommes là!");
       console.log(`response`, response);
-      // localStorage.setItem('token', response.data);
-      // this.context.setAuth(true);
       this.props.history.push("/signin");
     } catch (e) {
       this.setState({ error: e.response.data.error });
@@ -70,13 +75,23 @@ export default class SignUpForm extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="role">Role</label>
+          {/* <label htmlFor="role">Role</label>
           <input
-            type="text"
+            type="checkbox"
             name="role"
             value={this.state.role}
             onChange={this.handleChange}
-          />
+          /> */}
+
+          <label for="role">Role</label>
+          <select
+            id="role"
+            name="role"
+            onChange={(e) => this.handleOptionChange(e)}
+          >
+            <option value="guest">Guest</option>
+            <option value="host">Host</option>
+          </select>
 
           <label htmlFor="email">Email</label>
           <input

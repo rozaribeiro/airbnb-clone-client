@@ -105,22 +105,20 @@ class AddPlaceForm extends React.Component {
     } catch (e) {
       console.error(e);
       // this.setState({error: e.response.data.error});
-      // console.log(this.state.place_name);
     }
   }
   render() {
-    // console.log(this.context);
     return (
       <form action="POST">
         <ul>
-          <label htmlFor="users_id">host_user_id</label>
+          <label htmlFor="users_id">[dev] host_user_id</label>
           <input
             value={this.state.users_id}
             type="text"
             name="users_id"
             onChange={this.handleChange}
           />
-          <label htmlFor="city_id">City (ID)</label>
+          <label htmlFor="city_id">City (ID) : convert to cityName!</label>
           <input
             value={this.state.city_id}
             type="text"

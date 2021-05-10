@@ -29,7 +29,6 @@ export default class SignInForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    // const { email, password } = this.state;
     try {
       const response = await userService.signin(
         this.state.email,
@@ -38,28 +37,23 @@ export default class SignInForm extends Component {
       // console.log(response);
       localStorage.removeItem("token");
       localStorage.setItem("token", response.data.token);
-      // console.log(`localStorage contents: `, localStorage);
-      this.context.setAuth(true);
-      // console.log(response.data.user);
       console.log(response.data);
-
-      const {
-        first_name,
-        last_name,
-        email,
-        role,
-        authUserId,
-      } = response.data.user; // + id
+      this.context.setAuth(true);
+      const { first_name, last_name, email, role, authUserId } =
+        response.data.user; // + id
       this.context.setUserInfos(first_name, last_name, email, role, authUserId);
-
-      // console.log(`this.context`, this.context);
       this.props.history.push("/");
     } catch (error) {
       console.error(error);
-      // console.clear(error);
       this.setState({ error: error.response.data.error });
     }
   };
+
+  componentDidMount() {
+    if (appContext.isAuth) {
+      this.props.history.push("/");
+    }
+  }
   render() {
     return (
       <>

@@ -20,24 +20,36 @@ function Navbar(props) {
   return (
     <nav className="navbar">
       <ul>
-        <li>
-          Welcome <b>{store.user}</b> ! Role : <b>{store.role}</b> Auth User ID
-          : <b>{store.authUserId}</b>
-        </li>
+        {store.isAuth ? (
+          <li>
+            Welcome <b>{store.user}</b>! Role: <b>{store.role}</b> [dev] auth
+            user ID: <b>{store.authUserId}</b>
+          </li>
+        ) : (
+          "Welcome!"
+        )}
+
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/signup">Register</Link>
-        </li>
-        <li>
-          <Link to="/signin">Log In</Link>
-        </li>
-        <li>
-          <Link onClick={logOut} to="/">
-            Log out
-          </Link>
-        </li>
+        {store.isAuth ? null : (
+          <>
+            <li>
+              <Link to="/signup">Sign up</Link>
+            </li>
+            <li>
+              <Link to="/signin">Log in</Link>
+            </li>
+          </>
+        )}
+
+        {store.isAuth ? (
+          <li>
+            <Link onClick={logOut} to="/">
+              Log out
+            </Link>
+          </li>
+        ) : null}
       </ul>
     </nav>
   );

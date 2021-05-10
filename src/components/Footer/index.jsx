@@ -12,6 +12,8 @@ class Footer extends React.Component {
   render() {
     return (
       <footer className="footer">
+        <hr />
+        Footer not working yet
         <Router>
           <ul>
             <li>

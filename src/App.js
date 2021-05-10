@@ -57,9 +57,9 @@ function App() {
         {/* <PrivateRoute exact path="/places/:place_id" component={getOnePlace} />  */}
         {/* <PrivateRoute exact path="/places/:placeId" component={modifyPlace} />  */}
         {/* <PrivateRoute exact path="/user/:user_id/places/:placeId" component={removePlace} />  */}
-        <PrivateRoute exact path="/bookings" component={BookedList} />{" "}
+        <PrivateRoute exact path="/bookings" component={BookedList} />
+        {/* <PrivateRoute exact path="/bookings" component={BookPlace} />{" "} */}
         {/* GET */}
-        <PrivateRoute exact path="/bookings" component={BookPlace} />{" "}
         {/* POST */}
         {/* <PrivateRoute exact path="/bookings/:id" component={DeleteBooking} /> GET */}
         {/* // P L A C E S   R O U T E S
