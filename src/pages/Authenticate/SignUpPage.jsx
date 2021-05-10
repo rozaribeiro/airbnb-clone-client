@@ -43,7 +43,7 @@ export default class SignUpForm extends Component {
       // this.context.setAuth(true);
       this.props.history.push("/signin");
     } catch (e) {
-      this.setState({ error: e.response.data.error });
+      // this.setState({ error: e.response.data.error });
       console.log(this.state.error);
     }
     e.preventDefault();
