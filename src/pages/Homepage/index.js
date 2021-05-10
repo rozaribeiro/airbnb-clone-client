@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import SearchByCity from "../partials/Header/SearchByCity"
 export default class index extends Component {
   constructor(props) {
     super(props);
