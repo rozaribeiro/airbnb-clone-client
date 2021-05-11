@@ -52,9 +52,9 @@ function App() {
         <Route exact path="/signin" component={SignIn} />
         <PrivateRoute exact path="/places" component={AddPlace} /> {/* POST */}
         <Route exact path="/places/available" component={PlacesAvailable} />
+        {/* <PrivateRoute exact path="/places/:place_id" component={getOnePlace} /> */}
         {/* <PrivateRoute exact path="/places" component={addPlace} /> {/* POST */}
         {/* <PrivateRoute exact path="/places" component={getPlacesCity} /> GET */}
-        {/* <PrivateRoute exact path="/places/:place_id" component={getOnePlace} />  */}
         {/* <PrivateRoute exact path="/places/:placeId" component={modifyPlace} />  */}
         {/* <PrivateRoute exact path="/user/:user_id/places/:placeId" component={removePlace} />  */}
         <PrivateRoute exact path="/bookings" component={BookedList} />

@@ -14,7 +14,7 @@ export default class index extends Component {
 
   async componentDidMount() {
     try {
-      const response = await availablePLaceService.deletedPLaceService();
+      const response = await availablePLaceService.deletedPLaceServiceg();
       this.setState({
         data: response.data,
       });
