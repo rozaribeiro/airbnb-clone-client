@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import appContext from "../../store";
+import "../Navbar/navbar.scss";
+
 // import {Link, withRouter} from 'react-router-dom';
 
 function Navbar(props) {
@@ -13,14 +15,32 @@ function Navbar(props) {
     localStorage.removeItem("token");
     store.setAuth(false);
     store.setUserInfos(null, null, null, null, null);
-
     props.history.push("/");
   };
-
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
   return (
     <nav className="navbar">
       <ul>
-        {store.isAuth ? (
+        <li>
+          <Link to="/">Airbnb</Link>
+        </li>
+        <li>
+          <Link to="/">Places to stay</Link>
+        </li>{" "}
+        <li>
+          <Link to="/">Experiences</Link>
+        </li>
+        <li>
+          <Link to="/">Online Experiences</Link>
+        </li>
+      </ul>
+      <ul className="navbar-user">
+        {store.isAuth === true ? (
           <li>
             Welcome <b>{store.user}</b>! Role: <b>{store.role}</b> [dev] auth
             user ID: <b>{store.authUserId}</b>
@@ -28,11 +48,14 @@ function Navbar(props) {
         ) : (
           "Welcome!"
         )}
-
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        {store.isAuth ? null : (
+        {!store.isAuth && (
+          <>
+            <li>
+              <Link to="/signup">Become a host</Link>
+            </li>
+          </>
+        )}{" "}
+        {!store.isAuth && (
           <>
             <li>
               <Link to="/signup">Sign up</Link>
@@ -42,14 +65,13 @@ function Navbar(props) {
             </li>
           </>
         )}
-
-        {store.isAuth ? (
+        {store.isAuth && (
           <li>
             <Link onClick={logOut} to="/">
               Log out
             </Link>
           </li>
-        ) : null}
+        )}
       </ul>
     </nav>
   );

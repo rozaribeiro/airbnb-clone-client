@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SearchByCity from "../partials/Header/SearchByCity";
+import Button from "../../components/Button/index";
 import appContext from "../../store";
 export default class index extends Component {
   static useContext = appContext;
@@ -42,9 +43,11 @@ export default class index extends Component {
         {/* {this.context.isAuth === true ? ( */}
         <button onClick={this.addPlace}>Add a place</button>
         {/* ) : null} */}
-        (isAuth display wip)
         <button onClick={this.bookings}>Bookings</button>
         <button onClick={this.placeavailable}>Appartements à louer</button>
+        {/* <Button onClick={this.addPlace}/> */}
+        <Button props={{ text: "test" }} />
+        {/* <Button props={{ function: this.addPlace, text: "test" }} /> */}
       </>
     );
   }

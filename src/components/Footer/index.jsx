@@ -13,7 +13,7 @@ class Footer extends React.Component {
     return (
       <footer className="footer">
         <hr />
-        Footer not working yet
+        {/* Footer not working yet */}
         <Router>
           <ul>
             <li>
