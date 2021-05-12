@@ -34,10 +34,10 @@ export default class SignInForm extends Component {
         this.state.email,
         this.state.password
       );
-      // console.log(response);
+      console.log(response);
       localStorage.removeItem("token");
       localStorage.setItem("token", response.data.token);
-      console.log(response.data);
+      // console.log(response.data);
       this.context.setAuth(true);
       const { first_name, last_name, email, role, authUserId } =
         response.data.user; // + id

@@ -3,6 +3,8 @@ import api from "../../../services/api";
 // import {withRouter} from 'react-router-dom';
 import appContext from "../../../store";
 
+// dkong TODO : filter user input
+// get auth user from somewhere or verify with accessible data from client > get auth user id
 class AddPlaceForm extends React.Component {
   static contextType = appContext;
 
@@ -92,11 +94,15 @@ class AddPlaceForm extends React.Component {
         // axios.post("http://localhost:8000/api/places", place_data, config).then(
         (response) => {
           console.log(response);
-
-          // this.props.history.push("/bookings");
+          if (response.status === 201) {
+            // this.props.history.push("/");
+            // console.log(props);
+          } // displaySuccessMessage("Succesfully created the place!")
+          // push to place details?
         },
         (error) => {
           console.error(error);
+          // displayError("There was an error trying to add your place.")
         }
       );
 
@@ -175,12 +181,21 @@ class AddPlaceForm extends React.Component {
 
           <li>
             <label htmlFor="description">Description</label>
-            <input
+            {/* <input
               value={this.state.description}
               type="text"
               name="description"
               onChange={this.handleChange}
-            />
+            /> */}
+
+            {
+              <textarea
+                value={this.state.description}
+                type="text"
+                name="description"
+                onChange={this.handleChange}
+              />
+            }
           </li>
           <li>
             <label htmlFor="rooms">Rooms</label>
@@ -238,6 +253,7 @@ class AddPlaceForm extends React.Component {
               name="price_by_night"
               onChange={(e) => this.handleChangeInt(e)}
             />
+            {this.context.currency}
           </li>
 
           {/* <label htmlFor="available">available</label>

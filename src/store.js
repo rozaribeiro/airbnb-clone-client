@@ -20,6 +20,7 @@ class AppProvider extends React.Component {
       isAuth: token ? true : false,
       role: null,
       authUserId: null,
+      currency: "$",
       setUser: this.setUser,
       setUserInfos: this.setUserInfos,
 
