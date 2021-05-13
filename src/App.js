@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import React from "react";
-
+import SignInModal from "./components/Modal/SignInModal";
 // import Article from './pages/Article';
 // import {Header} from './pages/partials/Header';
 import appContext from "./store";
@@ -50,6 +50,7 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
+        {/* <SignInModal/> */}
         <PrivateRoute exact path="/places" component={AddPlace} /> {/* POST */}
         <Route exact path="/places/available" component={PlacesAvailable} />
         {/* <PrivateRoute exact path="/places/:place_id" component={getOnePlace} /> */}

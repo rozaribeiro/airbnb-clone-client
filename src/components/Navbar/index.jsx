@@ -27,6 +27,8 @@ function Navbar(props) {
     <nav className="navbar">
       <ul>
         <li>
+          {/* <img src="../../public/airbnb_logo.svg" alt="Airbnb homepage logo" /> */}
+          {/* public/airbnb_logo.svg */}
           <Link to="/">Airbnb</Link>
         </li>
         <li>
@@ -42,8 +44,7 @@ function Navbar(props) {
       <ul className="navbar-user">
         {store.isAuth === true ? (
           <li>
-            Welcome <b>{store.user}</b>! Role: <b>{store.role}</b> [dev] auth
-            user ID: <b>{store.authUserId}</b>
+            Welcome <b>{store.firstName}</b>! Role <b>{store.role}</b>
           </li>
         ) : (
           "Welcome!"

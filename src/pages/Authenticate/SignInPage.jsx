@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-// import api from
 import appContext from "../../store";
-
-// import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom';
 import { BrowserRouter as Link } from "react-router-dom";
 import { userService } from "../../services/";
+import "./signInPage.scss";
 
 export default class SignInForm extends Component {
   static contextType = appContext;
@@ -12,8 +10,8 @@ export default class SignInForm extends Component {
     super(props);
 
     this.state = {
-      email: "", // "" ?
-      password: "",
+      email: "host@gmail.com",
+      password: "1234",
       error: null,
     };
 
@@ -23,8 +21,8 @@ export default class SignInForm extends Component {
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log("email", this.state.email);
-    console.log("password", this.state.password);
+    // console.log("email", this.state.email);
+    // console.log("password", this.state.password);
   };
 
   handleSubmit = async (e) => {
@@ -35,34 +33,37 @@ export default class SignInForm extends Component {
         this.state.password
       );
       console.log(response);
-      localStorage.removeItem("token");
+      // localStorage.removeItem("token");
       localStorage.setItem("token", response.data.token);
-      // console.log(response.data);
       this.context.setAuth(true);
-      const { first_name, last_name, email, role, authUserId } =
-        response.data.user; // + id
-      this.context.setUserInfos(first_name, last_name, email, role, authUserId);
+      const { first_name, last_name, role, authUserId, email } =
+        response.data.user;
+      this.context.setUserInfos(first_name, last_name, role, authUserId, email);
+      // console.log(this.appContext);
+      console.log(this.context);
       this.props.history.push("/");
     } catch (error) {
       console.error(error);
-      this.setState({ error: error.response.data.error });
+      this.setState({ error: error });
     }
   };
 
   componentDidMount() {
-    if (appContext.isAuth) {
+    if (this.context.isAuth === true) {
       this.props.history.push("/");
     }
+    console.log(this.context);
   }
   render() {
     return (
       <>
         <h1>Sign In</h1>
-        <form action="POST">
+        <form action="POST" className="sign-in-form-container">
           <label htmlFor="email">Email</label>
           <input
             type="text"
             name="email"
+            placeholder="Email"
             value={this.state.email}
             onChange={this.handleChange}
           />
@@ -70,12 +71,13 @@ export default class SignInForm extends Component {
           <input
             type="password"
             name="password"
+            placeholder="Password"
             value={this.state.password}
             onChange={this.handleChange}
           />
           <button onClick={this.handleSubmit}>Log In</button>
-          <Link>Forgot Password?</Link>
-          <Link>Forgot Email?</Link>
+          <Link>Forgot Password</Link>
+          <Link>Forgot Email</Link>
         </form>
       </>
     );

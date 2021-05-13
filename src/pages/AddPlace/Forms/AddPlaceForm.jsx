@@ -1,10 +1,7 @@
 import React from "react";
 import api from "../../../services/api";
-// import {withRouter} from 'react-router-dom';
 import appContext from "../../../store";
 
-// dkong TODO : filter user input
-// get auth user from somewhere or verify with accessible data from client > get auth user id
 class AddPlaceForm extends React.Component {
   static contextType = appContext;
 
@@ -12,16 +9,13 @@ class AddPlaceForm extends React.Component {
     super(props);
 
     this.state = {
-      city_id: "",
-      users_id: "", // host ID?
-      // users_id: this.context.authUserId, // host ID?
-      name: "",
-      // place_name: "",
-      description: "",
+      city_id: 1,
+      name: "devName", // aka place name
+      description: "devDesc",
       rooms: 1,
       bathrooms: 1,
       max_guests: 1,
-      price_by_night: "",
+      price_by_night: 23,
       available: 1,
       error: null,
     };
@@ -47,38 +41,11 @@ class AddPlaceForm extends React.Component {
   handleAddPlaceSubmit(e) {
     e.preventDefault();
 
-    // console.log("submitted");
-    // console.log(e.target.value);
-    // try {
-    //     const response = await userService.login(email, password);
-    //     localStorage.setItem('token', response.data.token);
-    //     this.context.setAuth(true);
-    //     this.props.history.push('/home');
-    // } catch(e) {
-    //     this.setState({error: e.response.data.error});
-    // // console.log(this.state.place_name);
     const token = localStorage.getItem("token");
     console.log(token);
-    // get from localStorage when authenticated
-    // const api = axios.create({
-    // baseURL: `http://localhost:8000/`,
-    // });
 
-    // const {
-    //   city_id,
-    //   users_id,
-    //   name,
-    //   description,
-    //   rooms,
-    //   bathrooms,
-    //   max_guests,
-    //   price_by_night,
-    //   available,
-    // } = this.state;
     const place_data = {
       city_id: parseInt(this.state.city_id),
-      users_id: parseInt(this.state.users_id),
-      // users_id: this.context.authUserId,
       name: this.state.name,
       description: this.state.description,
       rooms: this.state.rooms,
@@ -86,19 +53,16 @@ class AddPlaceForm extends React.Component {
       max_guests: this.state.max_guests,
       price_by_night: this.state.price_by_night,
       available: this.state.available,
+      role: this.context.role,
     };
 
-    // console.log(place_data);
     try {
       api.post("/api/places", place_data).then(
-        // axios.post("http://localhost:8000/api/places", place_data, config).then(
         (response) => {
           console.log(response);
           if (response.status === 201) {
             // this.props.history.push("/");
-            // console.log(props);
           } // displaySuccessMessage("Succesfully created the place!")
-          // push to place details?
         },
         (error) => {
           console.error(error);
@@ -106,16 +70,6 @@ class AddPlaceForm extends React.Component {
         }
       );
 
-      //   axios({
-      //     method: "post",
-      //     url: "http://localhost:8000/api/places",
-      //     data: {
-      //       place: "place_name",
-      //     },
-      //   });
-
-      // localStorage.setItem('token', response.data.token);
-      // this.context.setAuth(true);
       // this.props.history.push('/home');
     } catch (e) {
       console.error(e);
@@ -137,41 +91,23 @@ class AddPlaceForm extends React.Component {
     return array;
   }
   render() {
-    let maxGuests = 15;
-    let maxGuestOptions = [];
-    for (let i = 1; i <= maxGuests; i++) {
-      maxGuestOptions.push(
-        <option value={i} key={i}>
-          for {i} guests
-        </option>
-      );
-    }
-
-    // const maxGuests = 50;
     return (
       <form action="POST" className="add-place-form-container">
         <ul>
-          <li>
-            <label htmlFor="users_id">[dev] host_user_id</label>
-            <input
-              value={this.state.users_id}
-              type="text"
-              name="users_id"
-              onChange={(e) => this.handleChangeInt(e)}
-            />
-          </li>
           <li>
             <label htmlFor="city_id">City (ID) : convert to cityName!</label>
             <input
               value={this.state.city_id}
               type="text"
               name="city_id"
+              placeholder="City name"
               onChange={(e) => this.handleChangeInt(e)}
             />
           </li>
           <li>
             <label htmlFor="name">Place Name</label>
             <input
+              placeholder="Place name"
               value={this.state.name}
               type="text"
               name="name"
@@ -181,15 +117,10 @@ class AddPlaceForm extends React.Component {
 
           <li>
             <label htmlFor="description">Description</label>
-            {/* <input
-              value={this.state.description}
-              type="text"
-              name="description"
-              onChange={this.handleChange}
-            /> */}
 
             {
               <textarea
+                placeholder="Description"
                 value={this.state.description}
                 type="text"
                 name="description"
@@ -204,34 +135,20 @@ class AddPlaceForm extends React.Component {
               name="rooms"
               onChange={(e) => this.handleOptionChange(e)}
             >
-              {/* <option value="">{maxGuestOptions}</option> */}
               {this.maxOptions(20, null, "rooms")}
             </select>
           </li>
           <li>
             <label htmlFor="bathrooms">Bathrooms</label>
-            {/* <input
-            value={this.state.bathrooms}
-            type="text"
-            name="bathrooms"
-            onChange={this.handleChange}
-          /> */}
             <select
               id="bathrooms"
               name="bathrooms"
               onChange={(e) => this.handleOptionChange(e)}
             >
-              {/* <option value="">{maxGuestOptions}</option> */}
               {this.maxOptions(10, null, "bathrooms")}
             </select>
           </li>
-          {/* <label htmlFor="max_guests">Max guests</label>
-          <input
-            value={this.state.max_guests}
-            type="text"
-            name="max_guests"
-            onChange={this.handleChange}
-          /> */}
+
           <li>
             <label htmlFor="max_guests">Max guests</label>
             <select
@@ -239,8 +156,6 @@ class AddPlaceForm extends React.Component {
               name="max_guests"
               onChange={(e) => this.handleOptionChange(e)}
             >
-              {/* <option value="">{maxGuestOptions}</option> */}
-              {/* {maxGuestOptions} */}
               {this.maxOptions(100, "for", "guests")}
             </select>
           </li>
@@ -274,10 +189,6 @@ class AddPlaceForm extends React.Component {
           </button>
         </ul>
       </form>
-      // <article onClick={(e) => this.props.history.push('/article/' + this.props.id)}>
-      //     <h5>{this.props.title}</h5>
-      //     <img src={this.props.img} alt={this.props.title} />
-      // </article>
     );
   }
 }

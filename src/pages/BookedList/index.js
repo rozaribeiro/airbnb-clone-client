@@ -38,7 +38,7 @@ export default class index extends Component {
           <div>
             {console.log(`context`, context)}
             {console.log(`context role`, context.role)}
-            <h1>Bookings List (Page)</h1>
+            <h1>Bookings List</h1>
 
             {this.context.role === "host" ? <h2>Host booked places</h2> : null}
             {this.context.role === "host" // host view (need to refacto to page/component)

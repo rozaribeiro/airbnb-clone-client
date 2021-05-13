@@ -30,7 +30,7 @@ export default class index extends Component {
       <div>
         {/* // <h1>Places List</h1> */}
         <div className="PlaceAvailableTitle">
-          <h1>Appartement à louer:</h1>
+          <h1>Places to rent</h1>
         </div>
 
         {this.state.data.map((element, index) => {

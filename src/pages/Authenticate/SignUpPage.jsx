@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { userService } from "../../services/";
-// import api from
-// import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom';
-// import { BrowserRouter as Link } from "react-router-dom";
-
+import "./signUpPage.scss";
 export default class SignUpForm extends Component {
   constructor(props) {
     super(props);
@@ -58,9 +55,10 @@ export default class SignUpForm extends Component {
     return (
       <div className="signUp">
         <h1>Sign Up</h1>
-        <form action="POST">
+        <form action="POST" className="sign-up-form-container">
           <label htmlFor="first_name">First name</label>
           <input
+            placeholder="First Name"
             type="text"
             name="first_name"
             value={this.state.first_name}
@@ -69,6 +67,7 @@ export default class SignUpForm extends Component {
 
           <label htmlFor="last_name">Last name</label>
           <input
+            placeholder="Last Name"
             type="text"
             name="last_name"
             value={this.state.last_name}
@@ -83,7 +82,7 @@ export default class SignUpForm extends Component {
             onChange={this.handleChange}
           /> */}
 
-          <label for="role">Role</label>
+          <label htmlFor="role">Role</label>
           <select
             id="role"
             name="role"
@@ -95,6 +94,7 @@ export default class SignUpForm extends Component {
 
           <label htmlFor="email">Email</label>
           <input
+            placeholder="Email"
             type="text"
             name="email"
             value={this.state.email}
@@ -102,6 +102,7 @@ export default class SignUpForm extends Component {
           />
           <label htmlFor="password">Password</label>
           <input
+            placeholder="Password"
             type="password"
             name="password"
             value={this.state.password}

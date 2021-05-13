@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import "./footer.scss";
 
 class Footer extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Footer extends React.Component {
                   pathname: "/",
                 }}
               >
-                Home
+                Link 1
               </Link>
             </li>
             <li>
@@ -44,6 +45,7 @@ class Footer extends React.Component {
               </Link>
             </li>
           </ul>
+          Made by xyz
         </Router>
       </footer>
     );
