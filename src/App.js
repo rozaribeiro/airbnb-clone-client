@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import React from "react";
-
+// import SignInModal from "../src/Components/Modal"; // Modal
 // import Article from './pages/Article';
 // import {Header} from './pages/partials/Header';
 import appContext from "./store";
@@ -50,16 +50,17 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
+        {/* <SignInModal/> */}
         <PrivateRoute exact path="/places" component={AddPlace} /> {/* POST */}
         <Route exact path="/places/available" component={PlacesAvailable} />
+        {/* <PrivateRoute exact path="/places/:place_id" component={getOnePlace} /> */}
         {/* <PrivateRoute exact path="/places" component={addPlace} /> {/* POST */}
         {/* <PrivateRoute exact path="/places" component={getPlacesCity} /> GET */}
-        {/* <PrivateRoute exact path="/places/:place_id" component={getOnePlace} />  */}
         {/* <PrivateRoute exact path="/places/:placeId" component={modifyPlace} />  */}
         {/* <PrivateRoute exact path="/user/:user_id/places/:placeId" component={removePlace} />  */}
-        <PrivateRoute exact path="/bookings" component={BookedList} />{" "}
+        <PrivateRoute exact path="/bookings" component={BookedList} />
+        {/* <PrivateRoute exact path="/bookings" component={BookPlace} />{" "} */}
         {/* GET */}
-        <PrivateRoute exact path="/bookings" component={BookPlace} />{" "}
         {/* POST */}
         {/* <PrivateRoute exact path="/bookings/:id" component={DeleteBooking} /> GET */}
         {/* // P L A C E S   R O U T E S

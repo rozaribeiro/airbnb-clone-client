@@ -1,0 +1,20 @@
+.navbar {
+  display: flex;
+  // justify-content: space-between;
+  flex-direction: row;
+  background-color: rgba(94, 142, 246, 0.137);
+  .navbar-user {
+    // margin-left: 40%;
+  }
+  ul,
+  ol {
+    // display: flex;
+    // flex-direction: row;
+    li {
+      margin: 0% 1%;
+      // white-space: nowrap; // forces text to stay on the same line
+      // min-width: 10%;
+      // padding: 0% 1%;
+    }
+  }
+}

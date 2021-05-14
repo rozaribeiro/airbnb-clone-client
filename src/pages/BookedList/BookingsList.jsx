@@ -8,7 +8,6 @@ class BookingsList extends React.Component {
     console.log(this.props.data);
     return (
       <ul className="bookings-list">
-        LIST =
         {this.props.data.map((booking, i) => (
           <BookingsListItem
             key={i}

@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import appContext from "../../store";
+import "../Navbar/navbar.scss";
+
 // import {Link, withRouter} from 'react-router-dom';
 
 function Navbar(props) {
@@ -15,28 +17,62 @@ function Navbar(props) {
     store.setUserInfos(null, null, null, null, null);
     props.history.push("/");
   };
-
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
   return (
     <nav className="navbar">
       <ul>
         <li>
-          Welcome <b>{store.user}</b> ! Role : <b>{store.role}</b> Auth User ID
-          : <b>{store.authUserId}</b>
+          {/* <img src="../../public/airbnb_logo.svg" alt="Airbnb homepage logo" /> */}
+          {/* public/airbnb_logo.svg */}
+          <Link to="/">Airbnb</Link>
         </li>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Places to stay</Link>
+        </li>{" "}
+        <li>
+          <Link to="/">Experiences</Link>
         </li>
         <li>
-          <Link to="/signup">Register</Link>
+          <Link to="/">Online Experiences</Link>
         </li>
-        <li>
-          <Link to="/signin">Log In</Link>
-        </li>
-        <li>
-          <Link onClick={logOut} to="/">
-            Log out
-          </Link>
-        </li>
+      </ul>
+      <ul className="navbar-user">
+        {store.isAuth === true ? (
+          <li>
+            Welcome <b>{store.firstName}</b>! Role <b>{store.role}</b>
+          </li>
+        ) : (
+          "Welcome!"
+        )}
+        {!store.isAuth && (
+          <>
+            <li>
+              <Link to="/signup">Become a host</Link>
+            </li>
+          </>
+        )}{" "}
+        {!store.isAuth && (
+          <>
+            <li>
+              <Link to="/signup">Sign up</Link>
+            </li>
+            <li>
+              <Link to="/signin">Log in</Link>
+            </li>
+          </>
+        )}
+        {store.isAuth && (
+          <li>
+            <Link onClick={logOut} to="/">
+              Log out
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

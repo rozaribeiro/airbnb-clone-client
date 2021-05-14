@@ -2,6 +2,8 @@ import React from "react";
 // import {articleService} from '../../services';
 import AddPlaceForm from "./Forms/AddPlaceForm";
 
+import "../../pages/AddPlace/addPlacePage.scss";
+
 class AddPlace extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +28,8 @@ class AddPlace extends React.Component {
     // const article = this.state.article;
     return (
       <>
-        <h1>Add a place</h1>
+        {/* <h1>Add a place</h1> */}
+        <h2>We are going to help you publish a place.</h2>
         <AddPlaceForm />
         {/* {this.state.error && <p>{this.state.error}</p>}
                 {article &&
