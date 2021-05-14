@@ -17,7 +17,7 @@ import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
 
 import PlacesAvailable from "./pages/PlacesList/index";
 import BookedList from "./pages/BookedList"; //  GUEST List places booked
-import BookPlace from "./pages/BookPlace"; // GUEST book place
+// import BookPlace from "./pages/BookPlace"; // GUEST book place
 // import DeleteBooking from "./pages/DeleteBooking"; // GUEST delete booked place
 
 // import Authenticate from "./pages/Authenticate/"; // Inscription
@@ -77,6 +77,8 @@ function App() {
         {/* <Route exact path="/signin" component={Authenticate} /> */}
       </Switch>
       {/* <Footer /> */}
+      {/* (Mobile Navbar) */}
+      {/* <Navbar /> */}
     </Router>
   );
 }

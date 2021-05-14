@@ -90,6 +90,8 @@ class AddPlaceForm extends React.Component {
     }
     return array;
   }
+
+  componentDidMount() {}
   render() {
     return (
       <form action="POST" className="add-place-form-container">
