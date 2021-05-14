@@ -29,8 +29,5 @@ const availablePLaceService = {
   deletedPLaceService: async () => {
     return await api.delete("/api/user/:user_id/places/:placeId");
   },
-  getCities: async () => {
-    return await api.get("/api/cities");
-  },
 };
 export default availablePLaceService;

@@ -1,6 +1,7 @@
 import React from "react";
 import api from "../../../services/api";
 import appContext from "../../../store";
+import citiesService from "../../../services/cities";
 
 class AddPlaceForm extends React.Component {
   static contextType = appContext;
@@ -17,6 +18,7 @@ class AddPlaceForm extends React.Component {
       max_guests: 1,
       price_by_night: 23,
       available: 1,
+      data: null,
       error: null,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -91,7 +93,22 @@ class AddPlaceForm extends React.Component {
     return array;
   }
 
-  componentDidMount() {}
+  async componentDidMount() {
+    try {
+      const response = await citiesService.getCities();
+
+      this.setState({ data: response.data });
+      console.log("DATA ADD PLACE", response.data);
+    } catch (e) {
+      if (e.response.status === 403) {
+        // fix
+        // localStorage.removeItem('token');
+        // this.props.history.push('/');
+        // this.context.setAuth(false);
+      }
+      // this.setState({ error: e.message });
+    }
+  }
   render() {
     return (
       <form action="POST" className="add-place-form-container">
