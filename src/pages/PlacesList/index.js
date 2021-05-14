@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./placeList.css";
 import { availablePLaceService } from "../../services/";
 
@@ -12,8 +11,17 @@ export default class index extends Component {
       error: null,
     };
   }
-
+  tooBook (){$
+    return ( 
+      <appContext.Consumer>
+          {(context) => (
+            {this.context.role === "guest" ? <button onClick={"/bookings"}></button> : null}
+        )}
+      </appContext.Consumer>
+    )
+  }
   async componentDidMount() {
+
     try {
       const response = await availablePLaceService.getPlaceDisponibilty();
       this.setState({
@@ -23,8 +31,9 @@ export default class index extends Component {
     } catch (e) {
       this.setState({ error: "erreur server" });
     }
+ 
   }
-
+  
   render() {
     return (
       <div>
@@ -42,10 +51,12 @@ export default class index extends Component {
                 <li>Nombre de chambre: {element.rooms}</li>
                 <li>Nombre de salle de bain{element.bathrooms}</li>
                 <li>Prix:{element.price_by_night}£</li>
+                {this.postBook()}
               </ul>
             </div>
           );
         })}
+        {this.context.role === "guest" ? <button></button> : null}
       </div>
     );
   }

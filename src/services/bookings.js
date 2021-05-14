@@ -4,9 +4,11 @@ const bookingsService = {
   getBookedPlaces: async () => {
     return await api.get("/api/bookings");
   },
+  //NAWAL DEBUT
   bookPlaces: async () => {
     return await api.post("/api/bookings");
   },
+  //NAWAL FIN
   // deleteBookedPlace: async (id) => {
   //     return await api.get('/api/bookings/' + id);
   // }

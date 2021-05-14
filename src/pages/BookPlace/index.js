@@ -11,33 +11,23 @@
 //         error: null
 //     };
 // }
-
 // async componentDidMount() {
 //     try {
 //         const response = await bookingsService.bookPlaces();
-//         this.setState({ data: response.data });
-//         console.log("DATA BOOK PLACE",response.data);
+//         this.setState({ 
+//             data: response.data,
+//         });
+//         console.log("DATA BOOK PLACE",response.data,
 //     } catch (e) {
-//         if (e.response.status === 403) {
-//             localStorage.removeItem('token');
-//             this.props.history.push('/');
-//             this.context.setAuth(false);
-//         }
-//         this.setState({ error: e.message });
+//         // if(e.response.status === 403) {
+//         //     localStorage.removeItem('token');
+//         //     this.props.history.push('/');
+//         // }
+//         this.setState({ error: "erreur server" });
 //     }
-// }
-//   render() {
+// }   render() {
 //     return (
-      
-//       <div>
-//         {this.state.data.map((elelement, index) => {
-//           return( 
-            
-//             <button>Book Place</button>
-//           )
-            
-//        )}
-//     </div>
+
 //     );
 //   }
 // }

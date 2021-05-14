@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { bookingsService } from "../../services";
 import SearchByCity from "../partials/Header/SearchByCity"
+
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,7 @@ export default class index extends Component {
 
     console.log("props", this.props);
   }
-
+  
   signUp = () => {
     this.props.history.push("/signup");
   };
@@ -42,3 +44,7 @@ export default class index extends Component {
     );
   }
 }
+// NAWAL DBT
+// export default bookings;
+// NAWAL FIN
+
