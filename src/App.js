@@ -12,8 +12,8 @@ import Homepage from "./pages/Homepage/index";
 import SignUp from "./pages/Authenticate/SignUpPage"; // Inscription
 import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
 // import Bookings from "./pages/BookedList/";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer/";
+// import Navbar from "./components/Navbar";
+// import Footer from "./components/Footer/";
 
 import PlacesAvailable from "./pages/PlacesList/index";
 import BookedList from "./pages/BookedList"; //  GUEST List places booked
@@ -45,7 +45,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 function App() {
   return (
     <Router>
-      <Navbar />
+      {/* <Navbar /> */}
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signup" component={SignUp} />
@@ -75,7 +75,7 @@ function App() {
         routers.post("/api/bookings", isAuth, Bookings.postBookingsGuest); // NAWAL */}
         {/* <Route exact path="/signin" component={Authenticate} /> */}
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

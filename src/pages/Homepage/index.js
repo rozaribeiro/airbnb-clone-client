@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { bookingsService } from "../../services";
-import SearchByCity from "../partials/Header/SearchByCity"
-
+// import { bookingsService } from "../../services";
+// import SearchByCity from "../partials/Header/SearchByCity"
+import LoginForm from "../Authenticate/SignInPage"
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +9,6 @@ export default class index extends Component {
     this.state = {
       testValue: "",
     };
-
     console.log("props", this.props);
   }
   
@@ -32,11 +31,11 @@ export default class index extends Component {
   render() {
     return (
       <>
-        {/* <LoginForm /> */}
-        {/* <ul>
+        <LoginForm />
+        <ul>
           <button onClick={this.signUp}>Sign Up (Register)</button>
           <button onClick={this.signIn}>Sign In (Login)</button>
-        </ul> */}
+        </ul>
         <button onClick={this.addPlace}>Add a place</button>
         <button onClick={this.bookings}>Bookings</button>
         <button onClick={this.placeavailable}>Appartements à louer</button>
