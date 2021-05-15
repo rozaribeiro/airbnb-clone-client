@@ -77,7 +77,7 @@ function App() {
         {/* <Route exact path="/signin" component={Authenticate} /> */}
       </Switch>
       <Footer />
-      (Mobile Navbar)
+      [Mobile Navbar]
       <Navbar />
     </Router>
   );

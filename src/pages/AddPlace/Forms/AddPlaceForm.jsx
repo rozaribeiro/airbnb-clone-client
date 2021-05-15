@@ -18,7 +18,9 @@ class AddPlaceForm extends React.Component {
       max_guests: 1,
       price_by_night: 23,
       available: 1,
+      isLoaded: false,
       data: null,
+      cities: null,
       error: null,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -28,23 +30,28 @@ class AddPlaceForm extends React.Component {
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log(this.state);
+    // console.log(this.state);
   };
   handleChangeInt = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: parseInt(value) });
-    console.log(this.state);
+    // console.log(this.state);
   };
   handleOptionChange = (e) => {
     const { value, name } = e.target;
-    this.setState({ [name]: parseInt(value) });
+    if (name === "cities" || name === "city") {
+      this.setState({ city_id: parseInt(value) });
+    } else {
+      this.setState({ [name]: parseInt(value) });
+    }
+    console.log(this.state.city_id);
   };
 
   handleAddPlaceSubmit(e) {
     e.preventDefault();
 
-    const token = localStorage.getItem("token");
-    console.log(token);
+    // const token = localStorage.getItem("token");
+    // console.log(token);
 
     const place_data = {
       city_id: parseInt(this.state.city_id),
@@ -58,11 +65,14 @@ class AddPlaceForm extends React.Component {
       role: this.context.role,
     };
 
+    // console.log(place_data);
     try {
       api.post("/api/places", place_data).then(
         (response) => {
-          console.log(response);
           if (response.status === 201) {
+            console.log(response);
+            console.log(`props`,this.props);
+            
             // this.props.history.push("/");
           } // displaySuccessMessage("Succesfully created the place!")
         },
@@ -92,36 +102,60 @@ class AddPlaceForm extends React.Component {
     }
     return array;
   }
+  displayCitiesOptions(cities) {
+    console.log(`cities`, cities);
+    let array = [];
+
+    for (let i = 0; i < cities.length; i++) {
+      array.push(
+        <option name="city" value={cities[i].id} key={i}>
+          {cities[i].name}
+        </option>
+      );
+    }
+    return array;
+  }
 
   async componentDidMount() {
     try {
       const response = await citiesService.getCities();
 
-      this.setState({ data: response.data });
+      this.setState({ cities: response.data.result, isLoaded: true });
       console.log("DATA ADD PLACE", response.data);
     } catch (e) {
-      if (e.response.status === 403) {
-        // fix
-        // localStorage.removeItem('token');
-        // this.props.history.push('/');
-        // this.context.setAuth(false);
-      }
+      // if (e.response.status === 403) {
+      console.log(e);
+      // fix
+      // localStorage.removeItem('token');
+      // this.props.history.push('/');
+      // this.context.setAuth(false);
+      // }
       // this.setState({ error: e.message });
     }
   }
   render() {
+    const cities = this.state.cities;
+    // console.log(cities);
+    const isLoaded = this.state.isLoaded;
     return (
       <form action="POST" className="add-place-form-container">
         <ul>
           <li>
-            <label htmlFor="city_id">City (ID) : convert to cityName!</label>
-            <input
+            <label htmlFor="city_id">City</label>
+            {/* <input
               value={this.state.city_id}
               type="text"
               name="city_id"
               placeholder="City name"
               onChange={(e) => this.handleChangeInt(e)}
-            />
+            /> */}
+            <select
+              id="cities"
+              name="cities"
+              onChange={(e) => this.handleOptionChange(e)}
+            >
+              {isLoaded && this.displayCitiesOptions(cities)}
+            </select>
           </li>
           <li>
             <label htmlFor="name">Place Name</label>

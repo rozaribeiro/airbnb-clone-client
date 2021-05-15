@@ -35,6 +35,7 @@ export default class SignInForm extends Component {
       console.log(response);
       // localStorage.removeItem("token");
       localStorage.setItem("token", response.data.token);
+      // localStorage.setItem("token", response.data.token);
       this.context.setAuth(true);
       const { first_name, last_name, role, authUserId, email } =
         response.data.user;
@@ -76,8 +77,8 @@ export default class SignInForm extends Component {
             onChange={this.handleChange}
           />
           <button onClick={this.handleSubmit}>Log In</button>
-          <Link>Forgot Password</Link>
-          <Link>Forgot Email</Link>
+          <Link to="/reset-password">Forgot Password</Link>
+          <Link to="/reset-email">Forgot Email</Link>
         </form>
       </>
     );
