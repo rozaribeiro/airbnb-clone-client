@@ -1,0 +1,14 @@
+.homepageImage {
+  background-image: url("../../assets/img/airbnb-mobile-720.webp");
+  height: 55vh;
+  //   height: 100%;
+  width: 100vw;
+  //   width: 100vw;
+  //   width: auto;
+
+  // max-width: fit-content;
+  object-fit: contain;
+  //   object-fit: cover;
+  //   background-repeat: no-repeat;
+  background-repeat: round;
+}

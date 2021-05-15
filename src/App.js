@@ -13,6 +13,7 @@ import SignUp from "./pages/Authenticate/SignUpPage"; // Inscription
 import SignIn from "./pages/Authenticate/SignInPage"; // Connexion
 // import Bookings from "./pages/BookedList/";
 import Navbar from "./components/Navbar";
+import MobileNavbar from "./components/Navbar/MobileNavbar/";
 import Footer from "./components/Footer/";
 
 import PlacesAvailable from "./pages/PlacesList/index";
@@ -77,8 +78,7 @@ function App() {
         {/* <Route exact path="/signin" component={Authenticate} /> */}
       </Switch>
       <Footer />
-      [Mobile Navbar]
-      <Navbar />
+      <MobileNavbar />
     </Router>
   );
 }

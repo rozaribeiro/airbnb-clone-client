@@ -3,6 +3,7 @@ import SearchByCity from "../partials/Header/SearchByCity";
 import Button from "../../components/Button/index";
 import appContext from "../../store";
 import SignInModal from "../../components/Modal/SignInModal";
+import "./homepage.scss";
 export default class index extends Component {
   static useContext = appContext;
   constructor(props) {
@@ -33,7 +34,7 @@ export default class index extends Component {
 
   render() {
     return (
-      <>
+      <div className="homepageImage">
         {/* <LoginForm /> */}
         {/* <ul>
           <button onClick={this.signUp}>Sign Up (Register)</button>
@@ -57,7 +58,7 @@ export default class index extends Component {
         {/* <Button onClick={this.addPlace}/> */}
         {/* <Button props={{ text: "test" }} /> */}
         {/* <Button props={{ function: this.addPlace, text: "test" }} /> */}
-      </>
+      </div>
     );
   }
 }

@@ -1,0 +1,23 @@
+.mobileNavbar {
+  // display: flex;
+  // justify-content: space-between;
+  // flex-direction: column;
+  background-color: rgba(94, 142, 246, 0.137);
+  // .navbar-user {
+  // margin-left: 40%;
+  // }
+  ul,
+  ol {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2% 1%;
+
+    li {
+      // margin: 0% 1%;
+      // white-space: nowrap; // forces text to stay on the same line
+      // min-width: 10%;
+      // padding: 0% 1%;
+    }
+  }
+}
