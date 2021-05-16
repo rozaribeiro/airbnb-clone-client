@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import React from "react";
-import SignInModal from "./components/Modal/SignInModal";
+// import SignInModal from "./components/Modal/SignInModal";
 // import Article from './pages/Article';
 // import {Header} from './pages/partials/Header';
 import appContext from "./store";
@@ -18,8 +18,8 @@ import Footer from "./components/Footer/";
 
 import PlacesAvailable from "./pages/PlacesList/index";
 import BookedList from "./pages/BookedList"; //  GUEST List places booked
-import BookPlace from "./pages/BookPlace"; // GUEST book place
-import DeleteBooking from "./pages/DeleteBooking"; // GUEST delete booked place
+// import BookPlace from "./pages/BookPlace"; // GUEST book place
+// import DeleteBooking from "./pages/DeleteBooking"; // GUEST delete booked place
 
 // import Authenticate from "./pages/Authenticate/"; // Inscription
 

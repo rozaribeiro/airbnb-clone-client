@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import SearchByCity from "../partials/Header/SearchByCity";
-import Button from "../../components/Button/index";
+// import SearchByCity from "../partials/Header/SearchByCity";
+// import Button from "../../components/Button/index";
 import appContext from "../../store";
-import SignInModal from "../../components/Modal/SignInModal";
+// import SignInModal from "../../components/Modal/SignInModal";
 import "./homepage.scss";
 export default class index extends Component {
   static useContext = appContext;
