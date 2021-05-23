@@ -1,12 +1,11 @@
 import React from "react";
 // import { BrowserRouter as Link } from "react-router-dom";
-import { BrowserRouter as Link } from "react-router-dom";
+// import { BrowserRouter as Link } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import appContext from "../../store";
 import "../Navbar/navbar.scss";
-
-// import {Link, withRouter} from 'react-router-dom';
 
 function Navbar(props) {
   const store = React.useContext(appContext);
